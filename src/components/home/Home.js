@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './home.css'
 
-class Home extends Component {
-    render() {
+export default function Home() {
         return (
             <div>
-                <h1>Home!</h1>
+                <img className="homepage-image" src="http://placekitten.com/1900/500" />
             </div>
         );
-    };
-}
-
-export default Home;
+    }
