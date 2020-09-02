@@ -1,0 +1,27 @@
+/* Navbar container */
+#header-navbar-container {
+    border: 1px solid red;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+}
+
+/* left navbar links div */
+.left-navbar-links {
+    border: 1px solid red;
+}
+
+/* left nav links */
+.left-nav-link {
+    border: 1px solid red;
+}
+
+/* right navbar links */
+.right-nav-links {
+    border: 1px solid red;
+}
+
+/* right nav links */
+.right-nav-link {
+    border: 1px solid red;
+}
