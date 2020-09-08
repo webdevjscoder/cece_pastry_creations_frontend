@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ShopForm extends Component {
+class ShopsForm extends Component {
     render() {
         return (
             <form>
@@ -11,4 +11,4 @@ class ShopForm extends Component {
     }
 }
 
-export default ShopForm;
+export default ShopsForm;
