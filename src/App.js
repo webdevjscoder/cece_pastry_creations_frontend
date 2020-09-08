@@ -6,6 +6,8 @@ import ServicesContainer from "./containers/SevicesContainer";
 import ContactContainer from "./containers/ContactContainer";
 import WorksContainer from "./containers/WorksContainer";
 import ShopsContainer from "./containers/ShopsContainer";
+import LoginContainer from "./containers/LoginContainer";
+import SignUpContainer from "./containers/SignUpContainer";
 import Footer from "./components/footer/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -20,6 +22,8 @@ function App() {
             <Route path="/works" component={WorksContainer} />
             <Route path="/contact" component={ContactContainer} />
             <Route path="/shop" component={ShopsContainer} />
+            <Route path="/sign-in" component={LoginContainer} />
+            <Route path="/sign-up" component={SignUpContainer} />
           </Switch>
           <Footer/>
         </div>
