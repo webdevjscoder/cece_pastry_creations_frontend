@@ -33,6 +33,11 @@ class Header extends Component {
                             exact
                             className="nav-link"
                         >Contact</NavLink>
+                        <NavLink
+                            to="/sign-in"
+                            exact
+                            className="nav-link"
+                        >Sign-in</NavLink>
                     </div>
                 </div>
             </div>
