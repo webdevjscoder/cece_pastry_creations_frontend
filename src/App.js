@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/header/Header";
-import Home from "./components/home/Home";
-import Service from "./components/service/Service";
-import Contact from "./components/contact/Contact";
-import Work from "./components/work/work";
-import Shop from "./components/shop/Shop";
+import HomeContainer from "./containers/HomeContainer";
+import ServicesContainer from "./containers/SevicesContainer";
+import ContactContainer from "./containers/ContactContainer";
+import WorksContainer from "./containers/WorksContainer";
+import ShopsContainer from "./containers/ShopsContainer";
 import Footer from "./components/footer/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -15,11 +15,11 @@ function App() {
         <div>
           <Header />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/services" component={Service} />
-            <Route path="/works" component={Work} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/shop" component={Shop} />
+            <Route path="/" exact component={HomeContainer} />
+            <Route path="/services" component={ServicesContainer} />
+            <Route path="/works" component={WorksContainer} />
+            <Route path="/contact" component={ContactContainer} />
+            <Route path="/shop" component={ShopsContainer} />
           </Switch>
           <Footer/>
         </div>

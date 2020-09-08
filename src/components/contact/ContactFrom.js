@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ContactFrom extends Component {
+class ContactForm extends Component {
     render() {
         return (
             <form>
@@ -14,4 +14,4 @@ class ContactFrom extends Component {
     }
 }
 
-export default ContactFrom;
+export default ContactForm;
