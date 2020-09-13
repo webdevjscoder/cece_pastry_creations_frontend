@@ -6,10 +6,13 @@ import ServicesTitle from "../components/service/ServicesTitle";
 import VectorImage from "../components/home/VectorImage";
 
 class HomeContainer extends Component {
+
     render() {
+        console.log(this.props)
         return (
             <div>
                 <h1>Home Container</h1>
+                <h2>Status: {this.props.loggedInStatus}</h2>
                 <HomeImage />
                 <div className="services-section">
                     <div className="services-title-and-image">

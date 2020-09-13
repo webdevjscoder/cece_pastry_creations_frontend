@@ -5,12 +5,17 @@ import App from './App';
 // link below is to use bootstrap
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import customerReducer from "./reducers/customerReducer";
 
+const store = createStore(customerReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store} >
+        <App />
+      </ Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
