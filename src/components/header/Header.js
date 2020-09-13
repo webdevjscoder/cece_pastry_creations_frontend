@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 class Header extends Component {
     render() {
+        console.log("header props:", this.props)
         return (
             <div id="header-navbar-container">
                 <div className="navbar-links">
@@ -34,10 +35,10 @@ class Header extends Component {
                             className="nav-link"
                         >Contact</NavLink>
                         <NavLink
-                            to="/sign-in"
+                            to="/login"
                             exact
                             className="nav-link"
-                        >Sign-in</NavLink>
+                        >Login</NavLink>
                     </div>
                 </div>
             </div>
@@ -46,3 +47,6 @@ class Header extends Component {
 }
 
 export default Header;
+
+// {Object.keys(this.props.currentUser).length !== 0 ?
+//     <p>Hello, {this.props.currentUser.first_name}</p> : }
