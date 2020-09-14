@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 class Header extends Component {
     render() {
-        console.log("header props:", this.props)
         return (
             <div id="header-navbar-container">
                 <div className="navbar-links">

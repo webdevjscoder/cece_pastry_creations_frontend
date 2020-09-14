@@ -10,8 +10,8 @@ import Footer from "./components/footer/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from 'axios';
 import LoginPage from "./components/loginSystem/LoginPage";
-// import SignUpForm from "./components/loginSystem/SignUpForm";
-// import LoginForm from "./components/loginSystem/LoginForm";
+import Dashboard from "./components/customer/Dashboard";
+import EditCustomerForm from "./components/customer/editCustomerForm";
 
 class App extends Component {
   constructor() {
@@ -26,13 +26,11 @@ class App extends Component {
     axios.get('http://localhost:3001/logged_in', {withCredentials: true})
         .then(res => {
           if (res.data.logged_in && this.state.loggedInStatus === "Not Logged In") {
-            console.log("You are logged in!")
             this.setState({
               loggedInStatus: "Logged In",
               customer: res.data.customer
             })
           } else if (!res.data.logged_in && (this.state.loggedInStatus === "Logged In")) {
-            console.log("You are not logged in")
             this.setState({
               loggedInStatus: "Not Logged IN",
               customer: {}
@@ -80,6 +78,17 @@ class App extends Component {
                                                  handleLogin={this.handleLogin}
                                                  loggedInStatus={this.state.loggedInStatus}
                                                  handleLogout={this.handleLogout} />}
+              />
+              <Route
+                exact
+                path="/dashboard"
+                render={props => <Dashboard {...props} loggedInStatus={this.state.loggedInStatus}
+                                            currentUser={this.state.customer} />
+                }
+              />
+              <Route
+                path="/edit-profile"
+                render={props => <EditCustomerForm {...props} currentUser={this.state.customer} />}
               />
             </Switch>
             <Footer/>

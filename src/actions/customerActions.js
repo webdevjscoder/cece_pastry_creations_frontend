@@ -1,11 +1,3 @@
-// export function fetchCustomers() {
-//     return (dispatch) => {
-//         fetch("http://localhost:3001/customers")
-//             .then(res => res.json())
-//             .then(customers => console.log(customers))
-//     }
-// }
-
 export function addNewCustomer(customerObj) {
     return (dispatch) => {
         let configurationObject = {
@@ -25,19 +17,34 @@ export function addNewCustomer(customerObj) {
     }
 }
 
-export function fetchCustomerToLogIn(customerObj) {
+export function editCustomer(customerObj) {
     console.log(customerObj)
     return (dispatch) => {
         let configureObj = {
-            method: 'POST',
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify(customerObj)
         };
-        fetch("http://localhost:3001/sessions", configureObj)
+        fetch(`http://localhost:3001/customers/${customerObj.id}`, configureObj)
             .then(res => res.json())
-            .then(customer => console.log(customer.data.id))
+            .then(customer => dispatch({
+                type: 'EDIT_CUSTOMER',
+                payload: customer.data
+            }))
+    }
+}
+
+export function deleteCustomer(customerId) {
+    console.log(customerId)
+    return (dispatch) => {
+        fetch(`http://localhost:3001/customers/${customerId}`, {method: "DELETE"})
+            .then(res => res.json())
+            .then(customer => dispatch({
+                type: 'DELETE_CUSTOMER',
+                payload: customer.data
+            }))
     }
 }

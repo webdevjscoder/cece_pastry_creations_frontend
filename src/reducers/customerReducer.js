@@ -4,17 +4,19 @@ export default function customerReducer(state = {
 }, action) {
     switch (action.type) {
         case 'ADD_CUSTOMER':
-            console.log({customers: [...state.customers, action.payload]});
             return {
                 ...state,
                 customers: [...state.customers, action.payload],
                 loggedIn: true
             }
-        case 'LOGIN_USER':
-            const customer = state.customers.map(customer => customer.id === action.payload)
-            console.log(customer)
+        case 'EDIT_CUSTOMER':
             return {
-                ...state.loggedInUser, customer
+                customers: action.payload
+            }
+        case 'DELETE_CUSTOMER':
+            console.log(action.payload)
+            return {
+                customers: state.customers.filter(customer => customer.id !== action.payload.id)
             }
         default:
             return state;
