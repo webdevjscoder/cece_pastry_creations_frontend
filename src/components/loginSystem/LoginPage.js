@@ -7,7 +7,7 @@ class LoginPage extends Component {
 
     handleSuccessfulAuth = (data) => {
         this.props.handleLogin(data)
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
 
     handleLogout = () => {
