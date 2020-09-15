@@ -12,7 +12,7 @@ export function addNewCustomer(customerObj) {
             .then(res => res.json())
             .then(customer => dispatch({
             type: 'REGISTER_CUSTOMER',
-            payload: customer.data
+            payload: customer
         }))
     }
 }
@@ -31,7 +31,7 @@ export function editCustomer(customerObj) {
             .then(res => res.json())
             .then(customer => dispatch({
                 type: 'EDIT_CUSTOMER',
-                payload: customer.data
+                payload: customer
             }))
     }
 }
@@ -42,7 +42,7 @@ export function deleteCustomer(customerId) {
             .then(res => res.json())
             .then(customer => dispatch({
                 type: 'DELETE_CUSTOMER',
-                payload: customer.data
+                payload: customer
             }))
     }
 }
