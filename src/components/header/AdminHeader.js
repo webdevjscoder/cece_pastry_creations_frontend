@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-// import "./header.css";
 
-class Header extends Component {
+class AdminHeader extends Component {
     render() {
         return (
             <div id="header-navbar-container">
@@ -34,10 +33,15 @@ class Header extends Component {
                             className="nav-link"
                         >Contact</NavLink>
                         <NavLink
-                            to="/login"
+                            to="/dashboard"
                             exact
                             className="nav-link"
-                        >Login</NavLink>
+                        >Profile</NavLink>
+                        <NavLink
+                            to="/add-product"
+                            exact
+                            className="nav-link"
+                        >Add Product</NavLink>
                     </div>
                 </div>
             </div>
@@ -45,4 +49,4 @@ class Header extends Component {
     };
 }
 
-export default Header;
+export default AdminHeader;

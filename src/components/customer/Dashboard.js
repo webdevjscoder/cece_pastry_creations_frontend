@@ -13,7 +13,7 @@ class Dashboard extends Component {
                 <h2>status: {this.props.loggedInStatus}</h2>
                 <Customer deleteCustomer={this.props.deleteCustomer} currentUser={this.props.currentUser} />
                 <Link
-                to="/edit-profile">Edit</Link>
+                to={"customer/" + this.props.currentUser.id + "/edit-profile"}>Edit</Link>
             </div>
         )
     }

@@ -11,14 +11,13 @@ export function addNewCustomer(customerObj) {
         fetch('http://localhost:3001/customers', configurationObject)
             .then(res => res.json())
             .then(customer => dispatch({
-            type: 'ADD_CUSTOMER',
+            type: 'REGISTER_CUSTOMER',
             payload: customer.data
         }))
     }
 }
 
 export function editCustomer(customerObj) {
-    console.log(customerObj)
     return (dispatch) => {
         let configureObj = {
             method: "PUT",
@@ -38,7 +37,6 @@ export function editCustomer(customerObj) {
 }
 
 export function deleteCustomer(customerId) {
-    console.log(customerId)
     return (dispatch) => {
         fetch(`http://localhost:3001/customers/${customerId}`, {method: "DELETE"})
             .then(res => res.json())

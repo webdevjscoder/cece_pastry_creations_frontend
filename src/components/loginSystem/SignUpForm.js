@@ -15,6 +15,13 @@ class SignUpForm extends Component {
         }
     }
 
+    checkBoxValue = () => {
+        this.setState({
+            is_admin: !this.state.is_admin
+        })
+    }
+
+
     handleChange = event => {
         const { name, value } = event.target
         this.setState({
@@ -96,7 +103,7 @@ class SignUpForm extends Component {
                     <label htmlFor="is_admin">Admin?</label> <br/>
                     <input type="checkbox"
                            name="is_admin"
-                           onChange={this.handleChange}
+                           onChange={this.checkBoxValue}
                            value={is_admin} />
                            <br />
                     <input type="submit" value="Sign Up" />

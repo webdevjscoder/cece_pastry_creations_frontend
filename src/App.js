@@ -12,6 +12,8 @@ import axios from 'axios';
 import LoginPage from "./components/loginSystem/LoginPage";
 import Dashboard from "./components/customer/Dashboard";
 import EditCustomerForm from "./components/customer/editCustomerForm";
+import AdminHeader from "./components/header/AdminHeader";
+import ProductForm from "./components/product/ProductForm";
 
 class App extends Component {
   constructor() {
@@ -62,7 +64,10 @@ class App extends Component {
     return (
         <Router>
           <div>
-            <Header currentUser={this.state.customer}/>
+            {this.state.customer.is_admin === true ?
+              <AdminHeader /> :
+                <Header currentUser={this.state.customer}/>
+            }
             <Switch>
               <Route path="/"
                      exact
@@ -87,8 +92,16 @@ class App extends Component {
                 }
               />
               <Route
-                path="/edit-profile"
+                path="/customer/:id/edit-profile"
                 render={props => <EditCustomerForm {...props} currentUser={this.state.customer} />}
+              />
+              <Route
+                  path="/dashboard"
+                  component={AdminHeader}
+              />
+              <Route
+                  path="/add-product"
+                  component={ProductForm}
               />
             </Switch>
             <Footer/>

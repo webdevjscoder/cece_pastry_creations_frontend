@@ -7,9 +7,9 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import customerReducer from "./reducers/customerReducer";
+import rootReducer from "./reducers/rootReducer";
 
-const store = createStore(customerReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
