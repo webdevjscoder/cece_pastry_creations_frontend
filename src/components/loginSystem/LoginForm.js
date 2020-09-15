@@ -13,9 +13,6 @@ class LoginForm extends Component {
         }
     }
 
-    // TODO
-    // Make sure login still works after combining reducers
-
     handleChange = event => {
         const {name, value} = event.target
         this.setState({
