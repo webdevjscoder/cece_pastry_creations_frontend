@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ContactImage from "../components/contact/Contact";
-import ContactForm from "../components/contact/ContactFrom";
+import ContactForm from "../components/contact/ContactForm";
 
 class ContactContainer extends Component {
     render() {

@@ -1,18 +1,48 @@
-import React, { Component } from "react";
-import { editCustomer } from "../../actions/customerActions";
-import { connect } from 'react-redux';
+import React, {Component} from "react";
+import {editCustomer} from "../../actions/customerActions";
+import {connect} from 'react-redux';
+import axios from 'axios';
 
 class EditCustomerForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                id: '',
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+                phone_number: '',
+                is_admin: false
+            }
+    }
 
-        state = {
-            id: this.props.currentUser.id,
-            first_name: this.props.currentUser.first_name,
-            last_name: this.props.currentUser.last_name,
-            email: this.props.currentUser.email,
-            password: this.props.currentUser.password,
-            phone_number: this.props.currentUser.phone_number,
-            is_admin: this.props.currentUser.is_admin
-        }
+    componentDidMount() {
+        this.getCustomerDetails()
+    }
+
+    getCustomerDetails() {
+        let id = this.props.match.params.id
+        axios.get(`http://localhost:3001/customers/${id}`)
+            .then(res => {
+                this.setState({
+                    id: res.data.id,
+                    first_name: res.data.first_name,
+                    last_name: res.data.last_name,
+                    email: res.data.email,
+                    password: res.data.password,
+                    phone_number: res.data.phone_number,
+                    is_admin: res.data.is_admin
+                })
+            })
+            .catch(error => console.log(error))
+    }
+
+    checkBoxValue = () => {
+        this.setState({
+            is_admin: !this.state.is_admin
+        })
+    }
 
     handleChange = event => {
         const {name, value} = event.target
@@ -60,21 +90,21 @@ class EditCustomerForm extends Component {
                     <input type="text"
                            name="phone_number"
                            onChange={this.handleChange}
-                           value={phone_number || ''}/>
+                           value={phone_number}/>
                     <br/>
                     <label htmlFor="is_admin">Admin?</label> <br/>
                     <input type="checkbox"
                            name="is_admin"
-                           onChange={this.handleChange}
+                           checked={!!this.state.is_admin}
+                           onChange={this.checkBoxValue}
                            value={is_admin}/>
                     <br/>
-                    <input type="submit" value="Sign Up"/>
+                    <input type="submit" value="Edit"/>
                 </form>
             </div>
         )
     }
 }
-
 
 const mapDispatchToProps = dispatch => {
     return {
