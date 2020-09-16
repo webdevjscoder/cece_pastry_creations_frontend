@@ -53,8 +53,8 @@ class EditCustomerForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.editCustomerInfo(this.state)
-        this.props.history.push('/dashboard')
+        this.props.editCustomerInfo(this.state);
+        this.props.history.push('/dashboard');
     }
 
     render() {

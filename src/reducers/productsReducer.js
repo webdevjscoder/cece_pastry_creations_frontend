@@ -1,6 +1,7 @@
 export function productReducer(state = {
     items: [],
-    successfulCreation: false
+    successfulCreation: false,
+    updatedSuccessfully: false
 }, action) {
     switch (action.type) {
         case 'FETCH_PRODUCTS':
@@ -16,12 +17,15 @@ export function productReducer(state = {
                 successfulCreation: true
             }
         case 'EDIT_PRODUCT':
+            console.log(action.payload)
             return {
                 ...state,
-                items: [...state.items, action.payload]
+                items: state.items.map(item => item.id === action.payload.id ?  action.payload : item),
+                updatedSuccessfully: true
             }
-        case 'DELETE_CUSTOMER':
+        case 'DELETE_PRODUCT':
             return {
+                ...state,
                 items: state.items.filter(item => item.id !== action.payload)
             }
         default:

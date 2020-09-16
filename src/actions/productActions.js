@@ -27,15 +27,35 @@ export function createProduct(productObj) {
                 payload: product
             }))
     }
-    // TODO
 }
 
 export function editProduct(productObj) {
     console.log(productObj)
-    // TODO
+    return (dispatch) => {
+        let configureObj = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(productObj)
+        };
+        fetch(`http://localhost:3001/products/${productObj.id}`, configureObj)
+            .then(res => res.json())
+            .then(product => dispatch({
+                type: 'EDIT_PRODUCT',
+                payload: product
+            }))
+    }
 }
 
 export function deleteProduct(productId) {
-    console.log(productId)
-    // TODO
+    return (dispatch) => {
+        fetch(`http://localhost:3001/products/${productId}`, {method: 'DELETE'})
+            .then(res => res.json())
+            .then(product => dispatch({
+                type: 'DELETE_PRODUCT',
+                payload: product
+            }))
+    }
 }
