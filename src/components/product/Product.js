@@ -1,7 +1,6 @@
 import React from "react";
 
 const Product = props => {
-    console.log(props)
     const productItems = props.products.map(product => (
         <div key={product.id}>
             <h3>{product.name}</h3>

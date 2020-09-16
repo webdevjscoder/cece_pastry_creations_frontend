@@ -14,6 +14,7 @@ import Dashboard from "./components/customer/Dashboard";
 import EditCustomerForm from "./components/customer/editCustomerForm";
 import AdminHeader from "./components/header/AdminHeader";
 import ProductForm from "./components/product/ProductForm";
+import LoggedInCustomer from "./components/header/LoggedInCustomer";
 
 class App extends Component {
   constructor() {
@@ -60,14 +61,21 @@ class App extends Component {
     })
   }
 
+  renderHeader = () => {
+    if (this.state.customer.is_admin === true) {
+      return <AdminHeader />
+    } else if (this.state.customer.is_admin === false) {
+      return <LoggedInCustomer />
+    } else {
+      return <Header />
+    }
+  }
+
   render() {
     return (
         <Router>
           <div>
-            {this.state.customer.is_admin === true ?
-              <AdminHeader /> :
-                <Header currentUser={this.state.customer}/>
-            }
+            {this.renderHeader()}
             <Switch>
               <Route path="/"
                      exact
@@ -77,7 +85,10 @@ class App extends Component {
               <Route path="/services" component={ServicesContainer} />
               <Route path="/works" component={WorksContainer} />
               <Route path="/contact" component={ContactContainer} />
-              <Route path="/shop" component={ShopsContainer} />
+              <Route path="/shop" render={props => <ShopsContainer
+                  {...props} currentUser={this.state.customer}
+                />}
+              />
               <Route path="/login"
                      render={props => <LoginPage {...props}
                                                  handleLogin={this.handleLogin}
@@ -101,6 +112,8 @@ class App extends Component {
                   path="/add-product"
                   component={ProductForm}
               />
+              // TODO
+              // Make Cart route here
             </Switch>
             <Footer/>
           </div>
