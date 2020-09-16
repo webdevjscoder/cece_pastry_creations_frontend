@@ -36,7 +36,6 @@ class ShopsContainer extends Component {
                 <ProductPopup
                     text='Click "Close Button" to hide popup'
                     id={this.state.id}
-                    products={this.props.products}
                     closePopup={this.togglePopup} />
                 :
                 null}
