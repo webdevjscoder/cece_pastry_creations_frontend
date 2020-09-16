@@ -4,6 +4,7 @@ import axios from "axios";
 import {deleteProduct, editProduct} from "../../actions/productActions";
 import { connect } from 'react-redux';
 import DeleteProductButton from "./DeleteProductButton";
+import AddProductToCartButton from "./AddProductToCartButton";
 
 
 class ProductPopup extends Component {
@@ -106,7 +107,16 @@ class ProductPopup extends Component {
                     <h1 onDoubleClick={this.changeEditMode}>{name}</h1>
                     <p onDoubleClick={this.changeEditMode}>{description}</p>
                     <button onClick={this.props.closePopup}>close me</button>
-                    <DeleteProductButton deleteProduct={this.deleteProduct} />
+                    {this.props.currentUser.is_admin === true ?
+                        <>
+                            <DeleteProductButton deleteProduct={this.deleteProduct} />
+                            <AddProductToCartButton />
+                        </>
+                        :
+                        <AddProductToCartButton />
+                    //    TODO
+                    //    get add product to cart function
+                    }
                 </div>
             </div>
         )
@@ -117,6 +127,7 @@ class ProductPopup extends Component {
     // find a way to re-render the popup with new values
 
     render() {
+        console.log(this.props)
         return this.state.editMode ?
             this.renderEditView()
             :

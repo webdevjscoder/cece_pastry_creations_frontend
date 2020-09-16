@@ -26,7 +26,7 @@ class ShopsContainer extends Component {
     }
 
     render() {
-        console.log(this)
+        console.log(this.props)
         return (
             <div>
                 <h1>Shops Container</h1>
@@ -34,9 +34,10 @@ class ShopsContainer extends Component {
                 <Product toggleProduct={this.togglePopup} products={this.props.products}/>
                 {this.state.showPopup ?
                 <ProductPopup
-                    text='Click "Close Button" to hide popup'
                     id={this.state.id}
-                    closePopup={this.togglePopup} />
+                    closePopup={this.togglePopup}
+                    currentUser={this.props.currentUser}
+                />
                 :
                 null}
             </div>
