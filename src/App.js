@@ -87,17 +87,15 @@ class App extends Component {
               <Route
                 exact
                 path="/dashboard"
-                render={props => <Dashboard {...props} loggedInStatus={this.state.loggedInStatus}
-                                            currentUser={this.state.customer} />
-                }
+                render={props => <Dashboard {...props}
+                                            loggedInStatus={this.state.loggedInStatus}
+                                            currentUser={this.state.customer}
+                                            handleLogout={this.handleLogout}
+                />}
               />
               <Route
                 path="/customer/:id/edit-profile"
                 render={props => <EditCustomerForm {...props} currentUser={this.state.customer} />}
-              />
-              <Route
-                  path="/dashboard"
-                  component={AdminHeader}
               />
               <Route
                   path="/add-product"
