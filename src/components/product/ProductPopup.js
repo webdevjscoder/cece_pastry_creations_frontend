@@ -5,7 +5,7 @@ import {deleteProduct, editProduct} from "../../actions/productActions";
 import { connect } from 'react-redux';
 import DeleteProductButton from "./DeleteProductButton";
 import AddProductToCartButton from "./AddProductToCartButton";
-
+import { addToCart } from "../../actions/cartActions";
 
 class ProductPopup extends Component {
     constructor(props) {
@@ -16,7 +16,8 @@ class ProductPopup extends Component {
             name: '',
             price: '',
             image: '',
-            description: ''
+            description: '',
+            rating: ''
         };
     }
 
@@ -33,7 +34,8 @@ class ProductPopup extends Component {
                     name: res.data.name,
                     price: res.data.price,
                     description: res.data.description,
-                    image: res.data.image
+                    image: res.data.image,
+                    rating: res.data.rating
                 }, () => console.log(this.state))
             })
             .catch(error => console.log(error))
@@ -61,7 +63,8 @@ class ProductPopup extends Component {
             name: '',
             price: '',
             image: '',
-            description: ''
+            description: '',
+            rating: ''
         })
     }
 
@@ -74,7 +77,7 @@ class ProductPopup extends Component {
     // after deleting either re-render /shop or refresh page
 
     renderEditView = () => {
-        const { name, price, description, image} = this.state
+        const { name, price, description, image, rating} = this.state
         return (
         <div className='popup'>
             <div className='popup_inner' >
@@ -85,10 +88,31 @@ class ProductPopup extends Component {
                     onChange={this.handleChange}
                 />
                 <br />
+                <input
+                    type="text"
+                    value={image}
+                    name="image"
+                    onChange={this.handleChange}
+                />
+                <br />
                 <textarea
                     type="text"
                     value={description}
                     name="description"
+                    onChange={this.handleChange}
+                />
+                <br />
+                <input
+                    type="number"
+                    value={price}
+                    name="price"
+                    onChange={this.handleChange}
+                />
+                <br />
+                <input
+                    type="number"
+                    value={rating}
+                    name="rating"
                     onChange={this.handleChange}
                 />
                 <br />
@@ -99,21 +123,31 @@ class ProductPopup extends Component {
         )
     }
 
+    handleAddProduct = () => {
+        this.props.addToCart(this.state.id, this.props.currentUser.id)
+    }
+
     renderDefaultView = () => {
-        const { id, name, price, description, image} = this.state
+        const { name, price, description, image, rating} = this.state
+        const formattedPrice = Number.parseFloat(price).toFixed(2);
+        const neutralRating = rating === null ? 0 : rating
         return (
             <div className='popup' >
                 <div className='popup_inner'>
                     <h1 onDoubleClick={this.changeEditMode}>{name}</h1>
+                    <img src={image} alt={name} />
                     <p onDoubleClick={this.changeEditMode}>{description}</p>
+                    <span>Price: $ {formattedPrice}</span>
+                    <br />
+                    <span>Rating: {neutralRating}</span>
                     <button onClick={this.props.closePopup}>close me</button>
                     {this.props.currentUser.is_admin === true ?
                         <>
                             <DeleteProductButton deleteProduct={this.deleteProduct} />
-                            <AddProductToCartButton />
+                            <AddProductToCartButton handleAddProduct={this.handleAddProduct} />
                         </>
                         :
-                        <AddProductToCartButton />
+                        <AddProductToCartButton handleAddProduct={this.handleAddProduct} />
                     //    TODO
                     //    get add product to cart function
                     }
@@ -138,7 +172,8 @@ class ProductPopup extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         editProductInfo: product => dispatch(editProduct(product)),
-        deleteProduct: productId => dispatch(deleteProduct(productId))
+        deleteProduct: productId => dispatch(deleteProduct(productId)),
+        addToCart: (productId, currentUserId) => dispatch(addToCart(productId, currentUserId))
     }
 }
 

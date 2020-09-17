@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 class LoggedInCustomer extends Component {
+
     render() {
+        const cartImg = <img src="https://img.icons8.com/nolan/34/favorite-cart.png" alt="shopping cart icon" />
+        // TODO
+        // add cart icon when navbar is being designed
         return (
             <div id="header-navbar-container">
                 <div className="navbar-links">
@@ -37,8 +41,11 @@ class LoggedInCustomer extends Component {
                             exact
                             className="nav-link"
                         >Profile</NavLink>
-                        {/*  TODO */}
-                        {/*  make cart nav link here   */}
+                        <NavLink
+                            to="/cart"
+                            exact
+                            className="nav-link"
+                        >Cart</NavLink>
                     </div>
                 </div>
             </div>

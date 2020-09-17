@@ -3,7 +3,7 @@ import ShopsImage from "../components/shop/ShopsImage";
 import { connect } from 'react-redux';
 import { fetchProducts } from "../actions/productActions";
 import Product from "../components/product/Product";
-import ProductPopup from "../components/product/PoductPopup";
+import ProductPopup from "../components/product/ProductPopup";
 
 class ShopsContainer extends Component {
     constructor(props) {
@@ -26,7 +26,6 @@ class ShopsContainer extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <h1>Shops Container</h1>
@@ -37,6 +36,7 @@ class ShopsContainer extends Component {
                     id={this.state.id}
                     closePopup={this.togglePopup}
                     currentUser={this.props.currentUser}
+                    cartId={this.props.cartId}
                 />
                 :
                 null}

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import axios from 'axios';
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
-import Logout from "./Logout";
 
 class LoginPage extends Component {
 

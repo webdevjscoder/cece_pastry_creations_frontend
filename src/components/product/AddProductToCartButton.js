@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 
-const AddProductToCartButton = props => {
-    return (
-        <button>Add to Cart</button>
-    )
+class AddProductToCartButton extends Component {
+    render() {
+        return (
+            <button onClick={this.props.handleAddProduct}>Add to Cart</button>
+        )
+    }
 }
 
 export default AddProductToCartButton;
