@@ -20,3 +20,8 @@
     border-radius: 20px;
     background: white;
 }
+
+.popup_inner img {
+    width: 250px;
+    height: 300px;
+}

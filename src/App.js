@@ -15,13 +15,15 @@ import EditCustomerForm from "./components/customer/editCustomerForm";
 import AdminHeader from "./components/header/AdminHeader";
 import ProductForm from "./components/product/ProductForm";
 import LoggedInCustomer from "./components/header/LoggedInCustomer";
+import CustomerCart from "./components/customer/CustomerCart";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       loggedInStatus: "Not Logged In",
-      customer: {}
+      customer: {},
+      cartId: {}
     }
   }
 
@@ -31,12 +33,14 @@ class App extends Component {
           if (res.data.logged_in && this.state.loggedInStatus === "Not Logged In") {
             this.setState({
               loggedInStatus: "Logged In",
-              customer: res.data.customer
+              customer: res.data.customer,
+              cartId: res.data.cart
             })
           } else if (!res.data.logged_in && (this.state.loggedInStatus === "Logged In")) {
             this.setState({
               loggedInStatus: "Not Logged IN",
-              customer: {}
+              customer: {},
+              cartId: {}
             })
           }
         })
@@ -72,6 +76,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
         <Router>
           <div>
@@ -87,6 +92,7 @@ class App extends Component {
               <Route path="/contact" component={ContactContainer} />
               <Route path="/shop" render={props => <ShopsContainer
                   {...props} currentUser={this.state.customer}
+                  cartId={this.state.cartId}
                 />}
               />
               <Route path="/login"
@@ -112,8 +118,12 @@ class App extends Component {
                   path="/add-product"
                   component={ProductForm}
               />
-              // TODO
-              // Make Cart route here
+              <Route
+                to="/cart"
+                render={props => <CustomerCart
+                    {...props}
+                />}
+              />
             </Switch>
             <Footer/>
           </div>
