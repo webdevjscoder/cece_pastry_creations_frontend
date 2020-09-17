@@ -122,6 +122,7 @@ class App extends Component {
                 to="/cart"
                 render={props => <CustomerCart
                     {...props}
+                    cartId={this.state.cartId}
                 />}
               />
             </Switch>

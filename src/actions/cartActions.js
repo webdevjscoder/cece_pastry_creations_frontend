@@ -1,3 +1,14 @@
+export function fetchCurrentCartItems(cartId) {
+    return (dispatch) => {
+        fetch(`http://localhost:3001/carts/${cartId}/line_items`)
+            .then(res => res.json())
+            .then(products => dispatch({
+                type: 'FETCH_CART_ITEMS',
+                payload: products
+            }))
+    }
+}
+
 export function addToCart(product_id, currentUserId) {
     console.log(product_id, currentUserId)
     return (dispatch) => {
