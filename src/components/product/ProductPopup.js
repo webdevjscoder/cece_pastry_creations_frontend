@@ -27,6 +27,7 @@ class ProductPopup extends Component {
 
     getProductDetails() {
         let id = this.props.id
+        console.log(id)
         axios.get(`http://localhost:3001/products/${id}`)
             .then(res => {
                 this.setState({
@@ -75,6 +76,7 @@ class ProductPopup extends Component {
 
     // TODO
     // after deleting either re-render /shop or refresh page
+    // admin functionality
 
     renderEditView = () => {
         const { name, price, description, image, rating} = this.state
@@ -129,6 +131,7 @@ class ProductPopup extends Component {
     }
 
     renderDefaultView = () => {
+        this.redirect();
         const { name, price, description, image, rating} = this.state
         const formattedPrice = Number.parseFloat(price).toFixed(2);
         const neutralRating = rating === null ? 0 : rating
@@ -149,17 +152,22 @@ class ProductPopup extends Component {
                         </>
                         :
                         <AddProductToCartButton handleAddProduct={this.handleAddProduct} />
-                    //    TODO
-                    //    get add product to cart function
                     }
                 </div>
             </div>
         )
     }
 
+    redirect() {
+        if (this.props.addedProduct === true) {
+            this.props.history.push('/cart');
+        }
+    }
+
     // TODO
     // either render the /shop page or
     // find a way to re-render the popup with new values
+    // admin functionality
 
     render() {
         console.log(this.props)
@@ -167,6 +175,12 @@ class ProductPopup extends Component {
             this.renderEditView()
             :
             this.renderDefaultView()
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        addedProduct: state.carts.addedProduct
     }
 }
 
@@ -178,4 +192,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(ProductPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPopup);

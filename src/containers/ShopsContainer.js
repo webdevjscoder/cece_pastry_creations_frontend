@@ -37,6 +37,7 @@ class ShopsContainer extends Component {
                     closePopup={this.togglePopup}
                     currentUser={this.props.currentUser}
                     cartId={this.props.cartId}
+                    history={this.props.history}
                 />
                 :
                 null}

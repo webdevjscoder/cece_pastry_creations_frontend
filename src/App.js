@@ -23,7 +23,7 @@ class App extends Component {
     this.state = {
       loggedInStatus: "Not Logged In",
       customer: {},
-      cartId: {}
+      cart: ''
     }
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
             this.setState({
               loggedInStatus: "Logged In",
               customer: res.data.customer,
-              cartId: res.data.cart
+              cart: res.data.cart
             })
           } else if (!res.data.logged_in && (this.state.loggedInStatus === "Logged In")) {
             this.setState({
@@ -121,7 +121,7 @@ class App extends Component {
                 to="/cart"
                 render={props => <CustomerCart
                     {...props}
-                    cartId={this.state.cartId}
+                    cartId={this.state.cart}
                 />}
               />
             </Switch>

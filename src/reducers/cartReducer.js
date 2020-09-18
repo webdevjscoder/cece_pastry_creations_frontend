@@ -1,5 +1,7 @@
 export function cartReducer(state = {
-    cartLineItems: []
+    cartLineItems: [],
+    addedProduct: false,
+    removedProduct: false
 }, action) {
     switch (action.type) {
         case 'FETCH_CART_ITEMS':
@@ -10,12 +12,14 @@ export function cartReducer(state = {
         case 'ADD_TO_CART':
             return {
                 ...state,
-                cartLineItems: [...state.cartLineItems, action.payload]
+                cartLineItems: [...state.cartLineItems, action.payload],
+                addedProduct: true
             }
         case 'REMOVE_CART_ITEM':
             return {
                 ...state,
-               cartLineItems:  state.cartLineItems.filter(item => item.id !== action.payload)
+               cartLineItems:  state.cartLineItems.filter(item => item.id !== action.payload),
+               removedProduct: true
             }
         case 'CLEAR_CART':
             return {

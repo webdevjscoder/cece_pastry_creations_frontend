@@ -20,7 +20,14 @@ class CustomerCart extends Component {
         this.props.clearCartItems(this.props.cartId)
     }
 
+    refresh() {
+        if (this.props.removedProduct === true) {
+            window.location.reload();
+        }
+    }
+
     render() {
+        this.refresh();
         return (
             <div>
                 <h1>Cart</h1>
@@ -35,7 +42,8 @@ class CustomerCart extends Component {
 
 const mapStateToProps = state => {
     return {
-        cartItems: state.carts.cartLineItems
+        cartItems: state.carts.cartLineItems,
+        removedProduct: state.carts.removedProduct
     }
 }
 
