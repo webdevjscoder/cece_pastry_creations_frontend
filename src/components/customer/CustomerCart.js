@@ -1,28 +1,19 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { fetchCurrentCartItems } from "../../actions/cartActions";
+import { fetchCurrentCartItems, removeCartItem } from "../../actions/cartActions";
+import CartProducts from "./CartProducts";
 
 class CustomerCart extends Component {
 
     componentDidUpdate(prevProps) {
+        console.log("rendering")
         if (this.props.cartId !== prevProps.cartId) {
             this.props.renderLineItems(this.props.cartId)
         }
     }
 
-    renderCartItems = () => {
-        return this.props.cartItems.map(item => {
-            return (
-                <ul key={item.id}>
-                    <li>{item.name}</li>
-                    <li>{item.image}</li>
-                    <li>{item.description}</li>
-                    <li>{item.price}</li>
-                    <li>{item.rating === null ? 0 : item.rating}</li>
-                </ul>
-            )
-        })
-
+    handleDeleteClick = (productId) => {
+        this.props.removeLineItem(productId)
     }
 
     render() {
@@ -30,7 +21,9 @@ class CustomerCart extends Component {
         return (
             <div>
                 <h1>Cart</h1>
-                {this.renderCartItems()}
+                <CartProducts
+                    cartItems={this.props.cartItems}
+                    handleDeleteClick={this.handleDeleteClick} />
             </div>
         )
     }
@@ -38,13 +31,14 @@ class CustomerCart extends Component {
 
 const mapStateToProps = state => {
     return {
-        cartItems: state.carts.lineItems
+        cartItems: state.carts.cartLineItems
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        renderLineItems: cartId => dispatch(fetchCurrentCartItems(cartId))
+        renderLineItems: cartId => dispatch(fetchCurrentCartItems(cartId)),
+        removeLineItem: productId => dispatch(removeCartItem(productId))
     }
 }
 

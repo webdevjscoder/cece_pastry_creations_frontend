@@ -78,6 +78,7 @@ class ProductPopup extends Component {
 
     renderEditView = () => {
         const { name, price, description, image, rating} = this.state
+        const formattedPrice = Number.parseFloat(price).toFixed(2);
         return (
         <div className='popup'>
             <div className='popup_inner' >
@@ -104,7 +105,7 @@ class ProductPopup extends Component {
                 <br />
                 <input
                     type="number"
-                    value={price}
+                    value={formattedPrice}
                     name="price"
                     onChange={this.handleChange}
                 />

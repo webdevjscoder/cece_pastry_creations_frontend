@@ -37,3 +37,15 @@ export function addToCart(product_id, currentUserId) {
         // make sure this works
     }
 }
+
+export function removeCartItem(productId) {
+    console.log(productId)
+    return (dispatch) => {
+        fetch(`http://localhost:3001/products/${productId}`, {method: 'delete'})
+            .then(res => res.json())
+            .then(product => dispatch({
+                type: 'REMOVE_CART_ITEM',
+                payload: product
+            }))
+    }
+}
