@@ -10,7 +10,6 @@ export function fetchCurrentCartItems(cartId) {
 }
 
 export function addToCart(product_id, currentUserId) {
-    console.log(product_id, currentUserId)
     return (dispatch) => {
         let configureObj = {
             method: 'Post',
@@ -33,19 +32,26 @@ export function addToCart(product_id, currentUserId) {
                 type: 'ADD_TO_CART',
                 payload: product.line_item
             }))
-        // TODO
-        // make sure this works
     }
 }
 
 export function removeCartItem(productId) {
-    console.log(productId)
     return (dispatch) => {
         fetch(`http://localhost:3001/products/${productId}`, {method: 'delete'})
             .then(res => res.json())
             .then(product => dispatch({
                 type: 'REMOVE_CART_ITEM',
                 payload: product
+            }))
+    }
+}
+
+export function clearCart(cartId) {
+    return (dispatch) => {
+        fetch(`http://localhost:3001/carts/${cartId}/line_items`, {method: 'delete'})
+            .then(res => res.json())
+            .then(res => dispatch({
+                type: 'CLEAR_CART'
             }))
     }
 }
