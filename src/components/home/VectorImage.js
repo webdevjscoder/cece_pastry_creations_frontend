@@ -4,7 +4,7 @@ export default function vectorImage() {
     return (
             <>
                 <img src="https://img.pngio.com/underline-png-pictures-trzcacakrs-fancy-underline-png-1600_401.jpg"
-                    alt="vector line" />
+                    alt="vector line" height="100px" width="300px" />
             </>
     );
 }

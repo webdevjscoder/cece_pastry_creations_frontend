@@ -86,8 +86,14 @@ class App extends Component {
                      render={props => <HomeContainer {...props}
                                                      loggedInStatus={this.state.loggedInStatus} />}
               />
-              <Route path="/services" component={ServicesContainer} />
-              <Route path="/works" component={WorksContainer} />
+              <Route path="/services" render={props => <ServicesContainer
+                  {...props}
+                  currentUser={this.state.customer}
+              />} />
+              <Route path="/works" render={props => <WorksContainer
+                  {...props}
+                  currentUser={this.state.customer}
+              />} />
               <Route path="/contact" component={ContactContainer} />
               <Route path="/shop" render={props => <ShopsContainer
                   {...props} currentUser={this.state.customer}
