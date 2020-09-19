@@ -193,7 +193,7 @@ class ServicesContainer extends Component {
             <div>
                 <h1>Service Container</h1>
                 <ServicesImage />
-                {this.state.editMode ?
+                {this.state.editMode && this.props.currentUser.is_admin === true ?
                 this.renderEditView()
                 :
                 this.renderDefaultView()}

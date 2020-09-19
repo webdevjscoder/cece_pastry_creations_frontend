@@ -1,46 +1,32 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-// import "./header.css";
+import {Nav, Navbar} from "react-bootstrap";
 
 class Header extends Component {
     render() {
         return (
-            <div id="header-navbar-container">
-                <div className="navbar-links">
-                    <div className="links">
-                        <NavLink
-                            to="/"
-                            exact
-                            className="nav-link"
-                        >Home</NavLink>
-                        <NavLink
-                            to="/services"
-                            exact
-                            className="nav-link"
-                        >Services</NavLink>
-                        <NavLink
-                            to="/works"
-                            exact
-                            className="nav-link"
-                        >Works</NavLink>
-                        <NavLink
-                            to="/shop"
-                            exact
-                            className="nav-link"
-                        >Shop</NavLink>
-                        <NavLink
-                            to="/contact"
-                            exact
-                            className="nav-link"
-                        >Contact</NavLink>
-                        <NavLink
-                            to="/login"
-                            exact
-                            className="nav-link"
-                        >Login</NavLink>
-                    </div>
-                </div>
-            </div>
+            <>
+                <Navbar bg="dark" variant="dark" expand="lg">
+                    <Navbar.Brand href="/">CPC</Navbar.Brand>
+                    <NavLink className="d-inline p-2 bg-dark text-white"
+                             to="/services">Services</NavLink>
+                    <NavLink className="d-inline p-2 bg-dark text-white"
+                             to="/works">Works</NavLink>
+                    <NavLink className="d-inline p-2 bg-dark text-white"
+                             to="/shop">Shop</NavLink>
+                    <NavLink className="d-inline p-2 bg-dark text-white"
+                             to="/Contact">Contact</NavLink>
+                    <NavLink className="d-inline p-2 bg-dark text-white"
+                             to="/login">Login</NavLink>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav>
+                            <NavLink className="d-inline p2 bg-dark text-white"
+                                     to="/">Home</NavLink>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+            </>
         );
     };
 }

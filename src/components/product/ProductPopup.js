@@ -171,7 +171,7 @@ class ProductPopup extends Component {
 
     render() {
         console.log(this.props)
-        return this.state.editMode ?
+        return this.state.editMode && this.props.currentUser.is_admin === true ?
             this.renderEditView()
             :
             this.renderDefaultView()
