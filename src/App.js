@@ -67,9 +67,9 @@ class App extends Component {
 
   renderHeader = () => {
     if (this.state.customer.is_admin === true) {
-      return <AdminHeader />
+      return <AdminHeader currentUser={this.state.customer} />
     } else if (this.state.customer.is_admin === false) {
-      return <LoggedInCustomer />
+      return <LoggedInCustomer currentUser={this.state.customer} />
     } else {
       return <Header />
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ServicesImage from "../components/service/ServicesImage";
+import { Image } from 'react-bootstrap'
 
 class ServicesContainer extends Component {
     constructor(props) {
@@ -88,18 +89,32 @@ class ServicesContainer extends Component {
         } = this.state
         return (
             <div>
-                <div>
-                    <img src={serviceImg1} alt="kitty" onDoubleClick={this.changeEditMode} />
-                    <h3 onDoubleClick={this.changeEditMode}>{serviceName1}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{serviceDescription1}</p>
-                    <br />
-                    <img src={serviceImg2} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{serviceName2}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{serviceDescription2}</p>
-                    <br />
-                    <img src={serviceImg3} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{serviceName3}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{serviceDescription3}</p>
+                <div className="card flex-row flex-wrap my-2">
+                    <div className="card-header border-0 bg-white">
+                        <Image src={serviceImg1} onDoubleClick={this.changeEditMode} roundedCircle />
+                    </div>
+                    <div className="card-block px-2">
+                        <h3 className="card-title" onDoubleClick={this.changeEditMode}>{serviceName1}</h3>
+                        <p className="card-text" onDoubleClick={this.changeEditMode}>{serviceDescription1}</p>
+                    </div>
+                </div>
+                <div className="card flex-row flex-wrap my-2">
+                    <div className="card-header border-0 bg-white">
+                        <Image src={serviceImg2} onDoubleClick={this.changeEditMode} roundedCircle />
+                    </div>
+                    <div className="card-block px-2">
+                        <h3 className="card-title" onDoubleClick={this.changeEditMode}>{serviceName2}</h3>
+                        <p className="card-title" onDoubleClick={this.changeEditMode}>{serviceDescription2}</p>
+                    </div>
+                </div>
+                <div className="card flex-row flex-wrap my-2">
+                    <div className="card-header border-0 bg-white">
+                        <Image src={serviceImg3} onDoubleClick={this.changeEditMode} roundedCircle />
+                    </div>
+                    <div className="card-block px-2">
+                        <h3 className="card-title" onDoubleClick={this.changeEditMode}>{serviceName3}</h3>
+                        <p className="card-title" onDoubleClick={this.changeEditMode}>{serviceDescription3}</p>
+                    </div>
                 </div>
             </div>
         )
