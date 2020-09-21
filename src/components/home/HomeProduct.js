@@ -13,7 +13,7 @@ const HomeProduct = () => {
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old. Richard McClintock.</p>
                     <p className="p-3" style={{fontFamily: "Serif", fontSize: "26px", fontWeight: "bold"}}>$1.50</p>
-                    <a className="p-3" href="#" >PLACE AN ORDER NOW!</a>
+                    <a className="p-3" style={{fontFamily: "Serif"}} href="#" >PLACE AN ORDER NOW!</a>
                 </div>
             </div>
         </section>
