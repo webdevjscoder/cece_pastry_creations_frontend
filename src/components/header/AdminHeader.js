@@ -7,7 +7,7 @@ class AdminHeader extends Component {
     render() {
         const linkStyle = {
             color: "#9c77a9",
-            fontFamily: "Serif",
+            fontFamily: 'Lobster',
             fontWeight: "bold",
             fontSize: "18px",
             borderTop: "1px dotted #9c77a9",
