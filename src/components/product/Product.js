@@ -1,42 +1,49 @@
 import React from "react";
-import { Card, Button } from 'react-bootstrap';
+import {Button, Card} from "react-bootstrap";
 
 class Product extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = ({
             count: 0
-        }
+        })
+    }
+
+    handleAddCount = () => {
+        this.setState({
+            count: this.state.count + 1
+        })
+    }
+
+    handleSubtractCount = () => {
+        this.setState({
+            count: this.state.count - 1
+        })
     }
 
     render() {
-        const defaultImg = "http://placekitten.com/478/478"
-        const productItems = this.props.products.map(product => (
+        return (
             <Card
                 className="m-3"
-                key={product.id}
+                key={this.props.id}
                 style={{width: '30rem'}}>
-                <Card.Img height="478px" variant="top" src={product.image === "" ? defaultImg : product.image }/>
+                <Card.Img height="478px" variant="top" src={this.props.image === "" ? this.props.defaultImg : this.props.image }/>
                 <Card.Body>
-                    <Card.Title style={{fontFamily: "Lobster"}}>{product.name}</Card.Title>
+                    <Card.Title style={{fontFamily: "Lobster"}}>{this.props.name}</Card.Title>
                     <Card.Text style={{fontFamily: "Serif"}}>
-                        {product.description}
+                        {this.props.description}
                     </Card.Text>
                     <Button
                         style={{backgroundColor: "#9c77a9", borderColor: "#9c77a9", fontFamily: "Serif"}}
-                        onClick={() => this.props.toggleProduct(product.id)}
+                        onClick={() => this.props.togglePopup(this.props.id)}
                     >
                         View Product
                     </Button>
+                    <Button onClick={this.handleSubtractCount}>-</Button>
+                    <span>Count: {this.state.count}</span>
+                    <Button onClick={this.handleAddCount}>+</Button>
                 </Card.Body>
             </Card>
-        ));
-        return (
-            <div
-                className="d-flex flex-md-column flex-lg-row flex-lg-wrap align-items-md-center justify-content-lg-center my-5"
-            >
-                {productItems}
-            </div>
         )
     }
 }
