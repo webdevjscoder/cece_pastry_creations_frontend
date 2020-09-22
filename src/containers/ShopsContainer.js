@@ -28,7 +28,6 @@ class ShopsContainer extends Component {
     render() {
         return (
             <div>
-                <h1>Shops Container</h1>
                 <ShopsImage />
                 <Product toggleProduct={this.togglePopup} products={this.props.products}/>
                 {this.state.showPopup ?

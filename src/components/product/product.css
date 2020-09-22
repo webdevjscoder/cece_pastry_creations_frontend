@@ -19,6 +19,8 @@
     margin: auto;
     border-radius: 20px;
     background: white;
+    height: fit-content;
+    padding: 10px;
 }
 
 .popup_inner img {

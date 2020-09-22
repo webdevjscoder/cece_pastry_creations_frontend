@@ -1,8 +1,12 @@
 import React from "react";
+import {Button} from 'react-bootstrap';
 
 const DeleteProductButton = props => {
     return (
-        <button onClick={props.deleteProduct}>Delete</button>
+        <Button
+            style={{backgroundColor: "#9c77a9", borderColor: "#9c77a9"}}
+            // className="mx-md-3"
+            onClick={props.deleteProduct}>Delete</Button>
     )
 }
 
