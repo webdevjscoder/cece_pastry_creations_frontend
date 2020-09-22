@@ -76,7 +76,7 @@ class LoginForm extends Component {
                     <input type="submit" value="Sign In" />
                 </form>
                 <small>Not Registered?</small>
-                <Link to="/sign-up">Sign Up</Link>
+                <Link to="/signup">Sign Up</Link>
             </div>
         );
     }

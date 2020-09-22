@@ -16,6 +16,7 @@ import AdminHeader from "./components/header/AdminHeader";
 import ProductForm from "./components/product/ProductForm";
 import LoggedInCustomer from "./components/header/LoggedInCustomer";
 import CustomerCart from "./components/customer/CustomerCart";
+import SignUpForm from "./components/loginSystem/SignUpForm";
 
 class App extends Component {
   constructor() {
@@ -105,6 +106,11 @@ class App extends Component {
                                                  handleLogin={this.handleLogin}
                                                  loggedInStatus={this.state.loggedInStatus}
                                                  handleLogout={this.handleLogout} />}
+              />
+              <Route path="/signup"
+                    render={props => <SignUpForm {...props}
+                                    handleLogin={this.handleLogin}
+                    />}
               />
               <Route
                 exact

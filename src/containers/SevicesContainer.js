@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ServicesImage from "../components/service/ServicesImage";
-import { Image } from 'react-bootstrap'
+import { Image } from 'react-bootstrap';
+import ServiceTitle from "../components/service/ServiceTitle";
 
 class ServicesContainer extends Component {
     constructor(props) {
@@ -88,32 +89,32 @@ class ServicesContainer extends Component {
             serviceDescription3
         } = this.state
         return (
-            <div>
-                <div className="card flex-row flex-wrap my-2">
+            <div className="d-flex flex-md-column flex-lg-row mx-5 justify-content-between p-5">
+                <div className="card flex-md-row flex-md-wrap my-2 border-0">
                     <div className="card-header border-0 bg-white">
                         <Image src={serviceImg1} onDoubleClick={this.changeEditMode} roundedCircle />
                     </div>
                     <div className="card-block px-2">
-                        <h3 className="card-title" onDoubleClick={this.changeEditMode}>{serviceName1}</h3>
-                        <p className="card-text" onDoubleClick={this.changeEditMode}>{serviceDescription1}</p>
+                        <h3 className="card-title" style={{fontFamily: "Lobster"}} onDoubleClick={this.changeEditMode}>{serviceName1}</h3>
+                        <p className="card-text" style={{fontFamily: "Serif"}} onDoubleClick={this.changeEditMode}>{serviceDescription1}</p>
                     </div>
                 </div>
-                <div className="card flex-row flex-wrap my-2">
+                <div className="card flex-row flex-wrap my-2 border-0">
                     <div className="card-header border-0 bg-white">
                         <Image src={serviceImg2} onDoubleClick={this.changeEditMode} roundedCircle />
                     </div>
                     <div className="card-block px-2">
-                        <h3 className="card-title" onDoubleClick={this.changeEditMode}>{serviceName2}</h3>
-                        <p className="card-title" onDoubleClick={this.changeEditMode}>{serviceDescription2}</p>
+                        <h3 className="card-title" style={{fontFamily: "Lobster"}} onDoubleClick={this.changeEditMode}>{serviceName2}</h3>
+                        <p className="card-title" style={{fontFamily: "Serif"}} onDoubleClick={this.changeEditMode}>{serviceDescription2}</p>
                     </div>
                 </div>
-                <div className="card flex-row flex-wrap my-2">
+                <div className="card flex-row flex-wrap my-2 border-0">
                     <div className="card-header border-0 bg-white">
                         <Image src={serviceImg3} onDoubleClick={this.changeEditMode} roundedCircle />
                     </div>
                     <div className="card-block px-2">
-                        <h3 className="card-title" onDoubleClick={this.changeEditMode}>{serviceName3}</h3>
-                        <p className="card-title" onDoubleClick={this.changeEditMode}>{serviceDescription3}</p>
+                        <h3 className="card-title" style={{fontFamily: "Lobster"}} onDoubleClick={this.changeEditMode}>{serviceName3}</h3>
+                        <p className="card-title" style={{fontFamily: "Serif"}} onDoubleClick={this.changeEditMode}>{serviceDescription3}</p>
                     </div>
                 </div>
             </div>
@@ -206,8 +207,8 @@ class ServicesContainer extends Component {
     render() {
         return (
             <div>
-                <h1>Service Container</h1>
                 <ServicesImage />
+                <ServiceTitle />
                 {this.state.editMode && this.props.currentUser.is_admin === true ?
                 this.renderEditView()
                 :

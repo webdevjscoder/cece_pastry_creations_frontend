@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
 
 class LoginPage extends Component {
@@ -10,11 +9,10 @@ class LoginPage extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <h3>Status: {this.props.loggedInStatus}</h3>
-                <br />
-                <SignUpForm handleSuccessfulAuth={this.handleSuccessfulAuth} />
                 <br />
                 <LoginForm handleSuccessfulAuth={this.handleSuccessfulAuth} />
             </div>
