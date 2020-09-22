@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from 'axios'
 import LoginImage from "./LoginImage";
 import {Link} from "react-router-dom";
+import LoginTitle from "./LoginTitle";
+import {Button, Form} from "react-bootstrap";
 
 class LoginForm extends Component {
     constructor(props) {
@@ -57,26 +59,32 @@ class LoginForm extends Component {
         return (
             <div>
                 <LoginImage />
-                <h1>Log In</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="email">Email</label> <br />
-                    <input
-                        type="email"
-                        name="email"
-                        onChange={this.handleChange}
-                        value={email} />
-                        <br />
-                    <label htmlFor="password">Password</label> <br/>
-                    <input
-                        type="password"
-                        name="password"
-                        onChange={this.handleChange}
-                        value={password} />
-                        <br />
-                    <input type="submit" value="Sign In" />
-                </form>
-                <small>Not Registered?</small>
-                <Link to="/signup">Sign Up</Link>
+                <LoginTitle />
+                <Form className="contact-form" onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="email"
+                                      onChange={this.handleChange}
+                                      value={email}
+                                      type="email"
+                                      placeholder="Email"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="password"
+                                      onChange={this.handleChange}
+                                      value={password}
+                                      type="password"
+                                      placeholder="Password"/>
+                    </Form.Group>
+                    <Button style={{backgroundColor: "#9c77a9", borderColor: "#9c77a9"}} className="w-100" type="submit">
+                        Submit
+                    </Button>
+                    <div className="text-center p-5 w-100" style={{fontFamily: "Serif"}}>
+                        <small className="px-2" style={{fontSize: "16px"}}>Not Registered?</small>
+                        <Link style={{fontSize: "18px", color: "#9c77a9"}} to="/signup">Sign Up</Link>
+                    </div>
+                </Form>
             </div>
         );
     }
