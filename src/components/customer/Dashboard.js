@@ -11,6 +11,7 @@ class Dashboard extends Component {
     handleLogout = () => {
         axios.delete('http://localhost:3001/logout', {withCredentials: true})
             .then(res => {
+                this.props.history.push('/')
                 this.props.handleLogout()
             })
             .catch(error => {

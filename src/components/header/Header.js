@@ -45,8 +45,10 @@ class Header extends Component {
                                          style={linkStyle}
                                          to="/Contact">Contact</NavLink>
                                 <NavLink className="d-inline px-2 py-4 text-sm-left mx-3"
+                                         style={linkStyle}
                                          to="/login">Login</NavLink>
                                 <NavLink className="d-inline px-2 py-4 text-sm-left mx-3"
+                                         style={linkStyle}
                                          to="/signup">Signup</NavLink>
                             </div>
                         </Nav>

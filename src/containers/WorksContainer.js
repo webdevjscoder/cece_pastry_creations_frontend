@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import WorksImage from "../components/work/WorksImage";
-import ServicesImage from "../components/service/ServicesImage";
+import { Card } from 'react-bootstrap';
+import WorksTitle from "../components/work/WorksTitle";
 
 class WorksContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             editMode: false,
-            worksImg1: "http://placekitten.com/200/200",
-            worksImg2: 'http://placekitten.com/200/200',
-            worksImg3: 'http://placekitten.com/200/200',
-            worksImg4: 'http://placekitten.com/200/200',
-            worksImg5: 'http://placekitten.com/200/200',
-            worksImg6: 'http://placekitten.com/200/200',
+            worksImg1: "http://placekitten.com/600/470",
+            worksImg2: 'http://placekitten.com/600/470',
+            worksImg3: 'http://placekitten.com/600/470',
+            worksImg4: 'http://placekitten.com/600/470',
+            worksImg5: 'http://placekitten.com/600/470',
+            worksImg6: 'http://placekitten.com/600/470',
             worksName1: 'Works Title Goes Here',
             worksDescription1: 'Brief Description Goes Here',
             worksName2: 'Works Title Goes Here',
@@ -143,30 +144,72 @@ class WorksContainer extends Component {
         } = this.state
         return (
             <div>
-                <div>
-                    <img src={worksImg1} alt="kitty" onDoubleClick={this.changeEditMode} />
-                    <h3 onDoubleClick={this.changeEditMode}>{worksName1}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{worksDescription1}</p>
-                    <br />
-                    <img src={worksImg2} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{worksName2}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{worksDescription2}</p>
-                    <br />
-                    <img src={worksImg4} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{worksName4}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{worksDescription4}</p>
-                    <br />
-                    <img src={worksImg5} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{worksName5}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{worksDescription5}</p>
-                    <br />
-                    <img src={worksImg3} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{worksName3}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{worksDescription3}</p>
-                    <br />
-                    <img src={worksImg6} alt="kitty" />
-                    <h3 onDoubleClick={this.changeEditMode}>{worksName6}</h3>
-                    <p onDoubleClick={this.changeEditMode}>{worksDescription6}</p>
+                <div className="d-flex flex-md-column flex-lg-row flex-lg-wrap align-items-md-center my-5 ml-lg-3 mr-lg-3">
+                    <Card onDoubleClick={this.changeEditMode} className="m-2 text-center"
+                          style={{borderRadius: "10px", borderStyle: "solid", borderWidth: "4px"}}>
+                        <Card.Img variant="top" src={worksImg1} />
+                        <Card.Body>
+                            <Card.Title style={{fontFamily: "Lobster"}}>{worksName1}</Card.Title>
+                            <Card.Text style={{fontFamily: "Serif"}}>
+                                {worksDescription1}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card onDoubleClick={this.changeEditMode}
+                          style={{borderRadius: "10px", borderStyle: "solid", borderWidth: "4px"}}
+                          className="m-2 text-center">
+                        <Card.Img variant="top" src={worksImg2} />
+                        <Card.Body>
+                            <Card.Title style={{fontFamily: "Lobster"}}>{worksName2}</Card.Title>
+                            <Card.Text style={{fontFamily: "Serif"}}>
+                                {worksDescription2}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card onDoubleClick={this.changeEditMode}
+                          style={{borderRadius: "10px", borderStyle: "solid", borderWidth: "4px"}}
+                          className="m-2 text-center">
+                        <Card.Img variant="top" src={worksImg3} />
+                        <Card.Body>
+                            <Card.Title style={{fontFamily: "Lobster"}}>{worksName3}</Card.Title>
+                            <Card.Text style={{fontFamily: "Serif"}}>
+                                {worksDescription3}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card onDoubleClick={this.changeEditMode}
+                          style={{borderRadius: "10px", borderStyle: "solid", borderWidth: "4px"}}
+                          className="m-2 text-center">
+                        <Card.Img variant="top" src={worksImg4} />
+                        <Card.Body>
+                            <Card.Title style={{fontFamily: "Lobster"}}>{worksName4}</Card.Title>
+                            <Card.Text style={{fontFamily: "Serif"}}>
+                                {worksDescription4}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card onDoubleClick={this.changeEditMode}
+                          style={{borderRadius: "10px", borderStyle: "solid", borderWidth: "4px"}}
+                          className="m-2 text-center">
+                        <Card.Img variant="top" src={worksImg5} />
+                        <Card.Body>
+                            <Card.Title style={{fontFamily: "Lobster"}}>{worksName5}</Card.Title>
+                            <Card.Text style={{fontFamily: "Serif"}}>
+                                {worksDescription5}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card onDoubleClick={this.changeEditMode}
+                          style={{borderRadius: "10px", borderStyle: "solid", borderWidth: "4px"}}
+                          className="m-2 text-center">
+                        <Card.Img variant="top" src={worksImg6} />
+                        <Card.Body>
+                            <Card.Title style={{fontFamily: "Lobster"}}>{worksName6}</Card.Title>
+                            <Card.Text style={{fontFamily: "Serif"}}>
+                                {worksDescription6}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
                 </div>
             </div>
         )
@@ -330,9 +373,9 @@ class WorksContainer extends Component {
     render() {
         return (
             <div>
-                <h1>Works Container</h1>
                 <WorksImage />
-                {this.state.editMode && this.props.currentUser.is_admin === true ?
+                <WorksTitle />
+                {this.state.editMode ?
                     this.renderEditView()
                     :
                     this.renderDefaultView()}

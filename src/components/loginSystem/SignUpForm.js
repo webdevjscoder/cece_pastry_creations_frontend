@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios'
+import axios from 'axios';
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class SignUpForm extends Component {
         axios.post('http://localhost:3001/customers', {customer}, {withCredentials: true})
             .then(res => {
                 if (res.data.status === 'created') {
-                    this.props.handleSuccessfulAuth(res.data)
+                    this.handleSuccessfulAuth(res.data)
                 } else {
                     this.setState({
                         errors: res.data.errors
@@ -65,10 +65,17 @@ class SignUpForm extends Component {
         )
     }
 
+    handleSuccessfulAuth = (data) => {
+        this.props.handleLogin(data)
+        this.props.history.push('/dashboard')
+    }
+
     render() {
+        console.log(this.props, this)
         const {first_name, last_name, email, password, phone_number, is_admin} = this.state
         return (
             <div>
+                <h1>Sign Up</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="first_name">First Name</label> <br />
                     <input type="text"
