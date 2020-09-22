@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import SignupTitle from "./SignupTitle";
+import {Button, Form} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class SignUpForm extends Component {
     constructor(props) {
@@ -75,46 +78,63 @@ class SignUpForm extends Component {
         const {first_name, last_name, email, password, phone_number, is_admin} = this.state
         return (
             <div>
-                <h1>Sign Up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="first_name">First Name</label> <br />
-                    <input type="text"
-                           name="first_name"
-                           onChange={this.handleChange}
-                           value={first_name} />
-                           <br />
-                    <label htmlFor="last_name">Last Name</label> <br/>
-                    <input type="text"
-                           name="last_name"
-                           onChange={this.handleChange}
-                           value={last_name} />
-                           <br />
-                    <label htmlFor="email">Email</label> <br/>
-                    <input type="email"
-                           name="email"
-                           onChange={this.handleChange}
-                           value={email} />
-                           <br />
-                    <label htmlFor="password">Password</label> <br/>
-                    <input type="password"
-                           name="password"
-                           onChange={this.handleChange}
-                           value={password} />
-                           <br />
-                    <label htmlFor="phone">Phone #</label> <small>*Optional</small> <br/>
-                    <input type="text"
-                           name="phone_number"
-                           onChange={this.handleChange}
-                           value={phone_number} />
-                           <br />
-                    <label htmlFor="is_admin">Admin?</label> <br/>
-                    <input type="checkbox"
-                           name="is_admin"
-                           onChange={this.checkBoxValue}
-                           value={is_admin} />
-                           <br />
-                    <input type="submit" value="Sign Up" />
-                </form>
+                <SignupTitle />
+                <Form className="contact-form" onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicFirstName">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="first_name"
+                                      onChange={this.handleChange}
+                                      value={first_name}
+                                      type="text"
+                                      placeholder="First Name"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicLastName">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="last_name"
+                                      onChange={this.handleChange}
+                                      value={last_name}
+                                      type="text"
+                                      placeholder="Last Name"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="email"
+                                      onChange={this.handleChange}
+                                      value={email}
+                                      type="email"
+                                      placeholder="Email"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="password"
+                                      onChange={this.handleChange}
+                                      value={password}
+                                      type="password"
+                                      placeholder="Password"/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPhone">
+                        <Form.Control style={{borderWidth: "3px", borderColor: "#f1f1f1", fontFamily: "Serif"}}
+                                      name="phone_number"
+                                      onChange={this.handleChange}
+                                      value={phone_number}
+                                      type="phone"
+                                      placeholder="Phone (Optional)"/>
+                    </Form.Group>
+                    <Form.Group id="formGridCheckbox">
+                        <Form.Check type="checkbox"
+                                    label="Admin?"
+                                    name="is_admin"
+                                    onChange={this.checkBoxValue}
+                                    value={is_admin}/>
+                    </Form.Group>
+                    <Button style={{backgroundColor: "#9c77a9", borderColor: "#9c77a9"}} className="w-100" type="submit">
+                        Submit
+                    </Button>
+                    <div className="text-center p-5 w-100" style={{fontFamily: "Serif"}}>
+                        <small className="px-2" style={{fontSize: "16px"}}>Already have an account?</small>
+                        <Link style={{fontSize: "18px", color: "#9c77a9"}} to="/login">Log In</Link>
+                    </div>
+                </Form>
             </div>
         )
     }

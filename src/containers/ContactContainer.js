@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import ContactImage from "../components/contact/Contact";
+import ContactImage from "../components/contact/ContactImage";
 import ContactForm from "../components/contact/ContactForm";
+import ContactTitle from "../components/contact/ContactTitle";
 
 class ContactContainer extends Component {
     render() {
         return (
             <div>
-                <h1>Contact Container</h1>
                 <ContactImage />
+                <ContactTitle />
                 <ContactForm />
             </div>
         )

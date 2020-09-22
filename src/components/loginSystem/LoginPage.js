@@ -9,11 +9,8 @@ class LoginPage extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
-                <h3>Status: {this.props.loggedInStatus}</h3>
-                <br />
                 <LoginForm handleSuccessfulAuth={this.handleSuccessfulAuth} />
             </div>
         )
