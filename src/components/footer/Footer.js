@@ -10,7 +10,8 @@ export default function Footer() {
     }
 
     return (
-        <footer className='footer text-white' style={{backgroundColor: "#cce4db", padding: "60px"}}>
+        <footer className='footer'
+                style={{backgroundColor: "#cce4db", padding: "60px"}}>
             <div className='container text-center' style={footerStyle}>
                 <span>
                  Copyright &copy; 2020 Cece Pastry Creations

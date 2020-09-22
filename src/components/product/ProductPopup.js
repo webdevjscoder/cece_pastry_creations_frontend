@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import DeleteProductButton from "./DeleteProductButton";
 import AddProductToCartButton from "./AddProductToCartButton";
 import { addToCart } from "../../actions/cartActions";
+import {Button} from 'react-bootstrap';
 
 class ProductPopup extends Component {
     constructor(props) {
@@ -137,22 +138,40 @@ class ProductPopup extends Component {
         const neutralRating = rating === null ? 0 : rating
         return (
             <div className='popup' >
-                <div className='popup_inner'>
-                    <h1 onDoubleClick={this.changeEditMode}>{name}</h1>
-                    <img src={image} alt={name} />
-                    <p onDoubleClick={this.changeEditMode}>{description}</p>
-                    <span>Price: $ {formattedPrice}</span>
-                    <br />
-                    <span>Rating: {neutralRating}</span>
-                    <button onClick={this.props.closePopup}>close me</button>
-                    {this.props.currentUser.is_admin === true ?
-                        <>
-                            <DeleteProductButton deleteProduct={this.deleteProduct} />
-                            <AddProductToCartButton handleAddProduct={this.handleAddProduct} />
-                        </>
-                        :
-                        <AddProductToCartButton handleAddProduct={this.handleAddProduct} />
-                    }
+                <div className='popup_inner px-md-5 pb-md-5'>
+                    <h1
+                        style={{fontFamily: "Lobster"}}
+                        className="text-center p-5"
+                        onDoubleClick={this.changeEditMode}>{name}</h1>
+                    <div className="d-flex flex-md-column flex-lg-row flex-lg-wrap align-items-md-center justify-content-lg-center"
+                         style={{fontFamily: "Serif"}}>
+                        <div>
+                            <img src={image} alt={name} />
+                        </div>
+                        <div className="m-5">
+                            <p onDoubleClick={this.changeEditMode}>{description}</p>
+                            <span className="mb-4">Price: ${formattedPrice}</span>
+                            <br />
+                            <span className="mb-4">Rating: {neutralRating}</span>
+                        </div>
+                        <div className="d-flex w-100 justify-content-md-around justify-content-lg-around my-lg-5">
+                            <Button
+                                // className="mx-md-3"
+                                style={{backgroundColor: "#9c77a9", borderColor: "#9c77a9"}}
+                                onClick={this.props.closePopup}>close me</Button>
+                            {this.props.currentUser.is_admin === true ?
+                                <>
+                                    <DeleteProductButton
+                                        deleteProduct={this.deleteProduct} />
+                                    <AddProductToCartButton
+                                        handleAddProduct={this.handleAddProduct} />
+                                </>
+                                :
+                                <AddProductToCartButton
+                                    handleAddProduct={this.handleAddProduct} />
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         )
