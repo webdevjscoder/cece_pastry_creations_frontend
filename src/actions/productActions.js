@@ -30,7 +30,6 @@ export function createProduct(productObj) {
 }
 
 export function editProduct(productObj) {
-    console.log(productObj)
     return (dispatch) => {
         let configureObj = {
             method: "PUT",
@@ -55,6 +54,45 @@ export function deleteProduct(productId) {
             .then(res => res.json())
             .then(product => dispatch({
                 type: 'DELETE_PRODUCT',
+                payload: product
+            }))
+    }
+}
+
+export function incrementProduct(id) {
+    console.log(id)
+    return (dispatch) => {
+        let configuredObj = {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({})
+        }
+        fetch(`http://localhost:3001/products/${id}/increment`, configuredObj)
+            .then(res => res.json())
+            .then(product => dispatch({
+                type: 'INCREMENT_COUNT',
+                payload: product
+            }))
+    }
+}
+
+export function decrementProduct(id) {
+    return (dispatch) => {
+        let configuredObj = {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({})
+        }
+        fetch(`http://localhost:3001/products/${id}/decrement`, configuredObj)
+            .then(res => res.json())
+            .then(product => dispatch({
+                type: 'DECREMENT_COUNT',
                 payload: product
             }))
     }
