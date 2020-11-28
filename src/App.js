@@ -28,6 +28,8 @@ class App extends Component {
     }
   }
 
+
+
   loginStatus = () => {
     axios.get('http://localhost:3001/logged_in', {withCredentials: true})
         .then(res => {
@@ -50,6 +52,8 @@ class App extends Component {
 
   componentDidMount() {
     this.loginStatus()
+
+    fetch(`http://localhost:3001/carts/8`).then(res => res.json()).then(data => console.log(data))
   }
 
   handleLogin = (data) => {

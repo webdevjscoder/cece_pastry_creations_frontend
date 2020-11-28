@@ -1,5 +1,4 @@
 export function fetchCurrentCartItems(cartId) {
-    console.log(cartId)
     return (dispatch) => {
         fetch(`http://localhost:3001/carts/${cartId}/line_items`)
             .then(res => res.json())
